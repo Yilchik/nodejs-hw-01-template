@@ -1,6 +1,5 @@
 import { PATH_DB } from '../constants/contacts.js';
 import * as fs from 'node:fs/promises';
-import path from 'node:path';
 import { createFakeContact } from '../utils/createFakeContact.js';
 
 const generateContacts = async (number) => {
@@ -10,7 +9,6 @@ const generateContacts = async (number) => {
     contacts.push(createFakeContact());
   }
 
-  const filePath = path.resolve('src', 'db', 'db.json');
   let currentContacts = [];
 
   try {
@@ -23,10 +21,10 @@ const generateContacts = async (number) => {
   currentContacts = currentContacts.concat(contacts);
 
   await fs.writeFile(
-    filePath,
+    PATH_DB,
     JSON.stringify(currentContacts, null, 2),
     'utf-8',
   );
 };
 
-generateContacts(5);
+generateContacts(3);

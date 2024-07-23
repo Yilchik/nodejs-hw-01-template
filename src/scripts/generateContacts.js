@@ -12,7 +12,7 @@ const generateContacts = async (number) => {
   let currentContacts = [];
 
   try {
-    const data = await fs.readFile(filePath, 'utf-8');
+    const data = await fs.readFile(PATH_DB, 'utf-8');
     currentContacts = JSON.parse(data);
   } catch (error) {
     console.error(error);
@@ -27,4 +27,4 @@ const generateContacts = async (number) => {
   );
 };
 
-generateContacts(3);
+generateContacts(5);
